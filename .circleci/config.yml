@@ -6,7 +6,7 @@ docker_defaults: &docker_defaults
 
 commands:
   prep_env:
-    description: "Prepares environment with cache"
+    description: 'Prepares environment with cache'
     steps:
       - checkout:
           path: ~/repo
@@ -14,7 +14,7 @@ commands:
           name: Restore node_modules cache
           key: website-{{ checksum "yarn.lock" }}-{{ .Branch }}
   save_env_cache:
-    description: "Saves environment cache"
+    description: 'Saves environment cache'
     steps:
       - save_cache:
           name: Save node_modules cache
@@ -39,14 +39,14 @@ jobs:
           at: ./
       - add_ssh_keys:
           fingerprints:
-            - "17:59:4f:3f:42:ec:3c:e0:9f:55:88:c7:4d:b8:30:70"
+            - '17:59:4f:3f:42:ec:3c:e0:9f:55:88:c7:4d:b8:30:70'
       - run:
           name: Install crowdin
           command: |
-              - sudo apt-get update
-              - sudo apt-get install default-jre rsync
-              - wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
-              - sudo dpkg -i crowdin.deb
+            - sudo apt-get update
+            - sudo apt-get install default-jre rsync
+            - wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+            - sudo dpkg -i crowdin.deb
       - run:
           name: Setup git user and deploy website
           command: |
